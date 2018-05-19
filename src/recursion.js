@@ -13,11 +13,11 @@ var factorial = function(n) {
   if (n === 1 || n === 0) {
   	return 1;  
   } 
-  if (n < 0){
+  if (n < 0) {
     return null; 
   } 
   // recursive case: 
-  return n * factorial(n-1);
+  return n * factorial(n - 1);
 };
 
 // 2. Compute the sum of an array of integers.
@@ -46,14 +46,14 @@ var arraySum = function(array) {
       // recursive case
       sum += arraySum(num);
     }
-  })
+  });
   
   return sum;
 };
 
 // 4. Check if a number is even.
 var isEven = function(n) {
-  // negative ints
+  // negative integers
   if (n < 0) { 
     n = -n;
   };
@@ -87,6 +87,29 @@ var sumBelow = function(n) {
 // 6. Get the integers within a range (x, y).
 // range(2,9); // [3,4,5,6,7,8]
 var range = function(x, y) {
+  var results = [];
+
+  // recursive case
+  if (x === y) {
+    return [];
+  }
+
+  // recursive case
+  if (x < y) {
+    if (x === y - 1) {
+      return [];
+    }
+    results.push(x + 1);
+    return results.concat(range(x + 1, y));
+  }
+
+  if (x > y) {
+    if (x === y + 1) {
+      return [];
+    }
+    results.push(x - 1);
+    return results.concat(range(x - 1, y));
+  }
 };
 
 // 7. Compute the exponent of a number.

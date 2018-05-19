@@ -10,7 +10,7 @@ var factorial = function(n) {
   // multiply a number with number -1 repetitively (recursive case)
   // until n === 1; 
   // base case: 
-  if (n === 1 || n === 0){
+  if (n === 1 || n === 0) {
   	return 1;  
   } 
   if (n < 0){
@@ -28,19 +28,44 @@ var sum = function(array) {
   if (newArray.length === 0){
     return 0;
   }
-  return newArray.pop() + sum(newArray); 
   // recursive case  
+  return newArray.pop() + sum(newArray); 
 };
 
 // 3. Sum all numbers in an array containing nested arrays.
 // arraySum([1,[2,3],[[4]],5]); // 15
 var arraySum = function(array) {
-
+  var newArray = array.slice(0);
+  var sum = 0;
+  
+  newArray.forEach(function(num) {
+    // base case 
+    if (!Array.isArray(num)) {
+      sum += num;
+    } else {
+      // recursive case
+      sum += arraySum(num);
+    }
+  })
+  
+  return sum;
 };
 
 // 4. Check if a number is even.
 var isEven = function(n) {
- 
+  // negative ints
+  if (n < 0) { 
+    n = -n;
+  };
+  // base case
+  if (n - 2 === 0) {
+    return true;
+  } 
+  if (n === 1 || n - 2 === 1) {
+    return false;
+  }
+  // recursive case
+  return isEven(n - 2);
 };
 
 // 5. Sum all integers below a given integer.

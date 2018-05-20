@@ -133,11 +133,18 @@ var exponent = function(base, exp) {
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
 var powerOfTwo = function(n) {
+  
 };
 
 // 9. Write a function that reverses a string.
+// https://medium.freecodecamp.org/how-to-reverse-a-string-in-javascript-in-3-different-ways-75e4763c68cb
 var reverse = function(string) {
+  if (string.length === 0) {
+    return "";
+  }
+  return reverse(string.substr(1)) + string.charAt(0);
 };
+
 
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function(string) {

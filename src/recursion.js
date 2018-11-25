@@ -174,7 +174,9 @@ var divide = function(x, y) {
 // http://www.cse.wustl.edu/~kjg/cse131/Notes/Recursion/recursion.html
 // https://www.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/the-euclidean-algorithm
 var gcd = function(x, y) {
+
 };
+// console.log(gcd(4, 36)); // 4
 
 // 15. Write a function that compares each character of two strings and returns true if
 // both are identical.
@@ -191,11 +193,13 @@ var compareStr = function(str1, str2) {
     return compareStr(str1.slice(1), str2.slice(1));
   }
 };
+
 // console.log(compareStr('house', 'houses')) // false
 // console.log(compareStr('tomato', 'tomato')) // true
 // console.log(compareStr("", "s")); // false
 // console.log(compareStr("", "")); // true
 // console.log(compareStr("a", "b")); // false
+// console.log(compareStr("apple", "oranges")); // false
 
 // 16. Write a function that accepts a string and creates an array where each letter
 // occupies an index of the array.
@@ -221,7 +225,13 @@ var reverseArr = function(array) {
 // buildList(0,5) // [0,0,0,0,0]
 // buildList(7,3) // [7,7,7]
 var buildList = function(value, length) {
+  if (length === 0) {
+    return [];
+  }
+  return [value].concat(buildList(value, length - 1));
 };
+// console.log(buildList(0,5)); // [0,0,0,0,0]
+// console.log(buildList(7,3)); // [7,7,7]
 
 // 19. Implement FizzBuzz. Given integer n, return an array of the string representations of 1 to n.
 // For multiples of three, output 'Fizz' instead of the number.

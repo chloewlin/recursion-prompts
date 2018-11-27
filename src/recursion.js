@@ -397,22 +397,51 @@ var nestedEvenSum = function(obj) {
 
 // 30. Flatten an array containing nested arrays.
 // flatten([1,[2],[3,[[4]]],5]); // [1,2,3,4,5]
+
+// Solution 1: Using inner recursive solution 
+// var flatten = function(array) {
+//   var result = [];
+
+//   var helper = function(array) {
+//     array.forEach(function(val) {
+//       if (!Array.isArray(val)) {
+//         result.push(val);
+//       } else {
+//         helper(val);
+//       }
+//     });
+//   }
+
+//   helper(array);
+//   return result;
+// };
+
+// Solution 2: 
 var flatten = function(array) {
-  var result = [];
-
-  var helper = function(array) {
-    array.forEach(function(val) {
-      if (!Array.isArray(val)) {
-        result.push(val);
-      } else {
-        helper(val);
-      }
-    });
+  var flattenArray = [];
+  for (let i = 0; i < array.length; i++) {
+    if (!Array.isArray(array[i])) {
+      flattenArray.push(array[i]);
+    } else {
+      flattenArray = flattenArray.concat(flatten(array[i]));
+    }
   }
-
-  helper(array);
-  return result;
+  return flattenArray;
 };
+
+// Solution 3: 
+var flatten = function(array) {
+  if (array.length === 0) {
+    return array;
+  }
+  if (Array.isArray(array[0])) {
+    return flatten(array[0]).concat(flatten(array.slice(1)))
+  } else {
+    return [array[0]].concat(flatten(array.slice(1)));
+  }
+};
+
+console.log(flatten([1,[2],[3,[[4]]],5])); // [1, 2, 3, 4, 5]
 
 // 31. Given a string, return an object containing tallies of each letter.
 // letterTally('potato'); // {p:1, o:2, t:2, a:1}
@@ -452,7 +481,7 @@ var augmentElements = function(array, aug) {
   } 
   return [array[0].concat(aug)].concat(augmentElements(array.slice(1), aug));
 };
-console.log(augmentElements([[],[3],[7]], 5));
+// console.log(augmentElements([[],[3],[7]], 5));
 
 // 34. Reduce a series of zeroes to a single 0.
 // minimizeZeroes([2,0,0,0,1,4]) // [2,0,1,4]

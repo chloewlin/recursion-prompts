@@ -420,7 +420,7 @@ var letterTally = function(str, obj = {}) {
   if (str.length === 0) {
     return obj;
   } else {
-    obj[str[0]] = obj[str[0]]++ || 1;
+    obj[str[0]] = obj[str[0]] + 1 || 1;
   }
   return letterTally(str.slice(1), obj);
 };
@@ -452,7 +452,7 @@ var augmentElements = function(array, aug) {
   } 
   return [array[0].concat(aug)].concat(augmentElements(array.slice(1), aug));
 };
-// console.log(augmentElements([[],[3],[7]], 5));
+console.log(augmentElements([[],[3],[7]], 5));
 
 // 34. Reduce a series of zeroes to a single 0.
 // minimizeZeroes([2,0,0,0,1,4]) // [2,0,1,4]
